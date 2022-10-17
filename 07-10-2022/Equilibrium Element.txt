@@ -1,0 +1,68 @@
+import java.util.*;
+import java.io.*;
+import java.util.stream.*;
+
+class Main{
+    
+    public static void equilibriumElement(int N,int[] arr){
+        
+        int sum=0;
+        for(int i=0; i<N; i++){
+            sum=sum+arr[i];
+        }
+        // System.out.println(sum);
+        
+        
+        int[] right= new int[arr.length];
+        int rightsum=sum;
+        
+        for(int i=0; i<N; i++){
+            rightsum=rightsum-arr[i];
+            right[i]=rightsum;
+            // System.out.println(rightsum);
+        }
+        
+        int[] left= new int[arr.length];
+        int sum1=0;
+        for(int i=0; i<N; i++)
+        {
+            left[i]=sum1;
+            sum1=sum1+arr[i];
+            
+            // System.out.println(sum1);
+        }
+        
+        for(int i=0; i<N; i++)
+        {
+            if(left[i]==right[i])
+            {
+                System.out.println(i+1);
+                break;
+            }
+            else if(i==N-1)
+            {
+                System.out.println("-1");
+            }
+            else{
+                continue;
+            }
+            
+        }
+       
+        
+    }
+    
+    public static void main(String[] args) throws IOException{
+        
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        
+        int N = Integer.parseInt(bf.readLine());
+        
+        int[] arr = Stream.of(bf.readLine().trim().split(" ")).mapToInt(st->{
+                return Integer.parseInt(st);
+            }).toArray();
+        
+        equilibriumElement(N,arr);
+    }
+    
+}
