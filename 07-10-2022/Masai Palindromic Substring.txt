@@ -1,0 +1,42 @@
+import java.util.*;
+import java.io.*;
+import java.util.stream.*;
+
+class Main{
+    
+    public static void masaiPalindromicSubstring(String str){
+        
+        int max=0;
+        for(int i=0; i<str.length(); i++){
+            for(int j=i; j<str.length(); j++){
+                String bag = "";
+                for(int k=i; k<=j; k++){
+                    bag+=str.charAt(k);
+                }
+                
+                String temp="";
+                for(int l=bag.length()-1; l>=0; l--){
+                    temp+=bag.charAt(l);
+                }
+                if(temp.equals(bag) && temp.length()>max){
+                    max=temp.length();
+                }
+           }
+        }
+        
+        System.out.println(max);
+        
+    }
+    
+    public static void main(String[] args) throws IOException{
+        
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        
+        String str = bf.readLine();
+        
+        masaiPalindromicSubstring(str);
+        
+        
+    }
+    
+}
