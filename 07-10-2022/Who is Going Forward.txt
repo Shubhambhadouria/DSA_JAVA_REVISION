@@ -1,0 +1,46 @@
+import java.util.*;
+import java.io.*;
+import java.util.stream.*;
+
+class Main{
+    
+    public static void goingForward(int N,int K,int[] arr){
+        
+        int compare=0;
+        int count = 0;
+        for(int i=0; i<N; i++){
+            compare = arr[K-1];
+        }
+        for(int j=0; j<N; j++){
+            if(compare==0){
+                break;
+            }
+            if(arr[j]>=compare)
+            {
+                count++;
+            }
+        }
+        System.out.println(count);
+    
+        
+    }
+    
+    public static void main(String[] args) throws IOException{
+        
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        
+        int[] inArr = Stream.of(bf.readLine().trim().split(" ")).mapToInt(st->{
+                return Integer.parseInt(st);
+            }).toArray();
+        
+        int N = inArr[0];
+        int K = inArr[1];
+        
+        int[] arr = Stream.of(bf.readLine().trim().split(" ")).mapToInt(st->{
+                return Integer.parseInt(st);
+            }).toArray();
+        
+        goingForward(N,K,arr);
+    }
+    
+}
